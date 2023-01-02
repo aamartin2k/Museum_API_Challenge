@@ -14,6 +14,34 @@ namespace MuseumAPI.Persistence.Contexts
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         // Overrides
-        //protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            // create tables
+            // MuseumTheme
+            builder.Entity<MuseumTheme>().ToTable("MuseumThemes");
+            builder.Entity<MuseumTheme>().HasKey(p => p.Id);
+            builder.Entity<MuseumTheme>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd().HasValueGenerator<InMemoryIntegerValueGenerator<int>>();
+            builder.Entity<MuseumTheme>().Property(p => p.Description).IsRequired().HasMaxLength(30);
+            // data
+            builder.Entity<MuseumTheme>().HasData
+            (
+                new MuseumTheme { Id = 10, Description = "Art" },
+                new MuseumTheme { Id = 11, Description = "Natural Science" },
+                new MuseumTheme { Id = 12, Description = "History" }
+            );
+            // Museum
+            builder.Entity<Museum>().ToTable("Museums");
+            builder.Entity<Museum>().HasKey(p => p.Id);
+            builder.Entity<Museum>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd().HasValueGenerator<InMemoryIntegerValueGenerator<int>>();
+            builder.Entity<Museum>().Property(p => p.Name).IsRequired().HasMaxLength(50);
+            builder.Entity<Museum>().Property(p => p.Address).IsRequired().HasMaxLength(50);
+
+            builder.Entity<Museum>().HasMany(p => p.Articles).WithOne(p => p.Museum).HasForeignKey(p => p.MuseumId);
+
+
+
+        }
     }
 }

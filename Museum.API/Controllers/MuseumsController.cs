@@ -1,10 +1,12 @@
 ﻿using System;
+using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MuseumAPI.Domain.Models;
 using MuseumAPI.Domain.Services;
+using MuseumAPI.Mapping.Resources;
 
 namespace MuseumAPI.Controllers
 {
@@ -12,7 +14,8 @@ namespace MuseumAPI.Controllers
     [ApiController]
     public class MuseumsController : ControllerBase
     {
-        //
+        // fields
+        private readonly IMapper _mapper;
         private readonly IMuseumService _museumService;
 
         // Constructor
@@ -30,10 +33,10 @@ namespace MuseumAPI.Controllers
         }
 
         //
-        public async Task<IEnumerable<Museum>> ListAsync()
+        public async Task<IEnumerable<MuseumResource>> ListAsync()
         {
             var categories = await _museumService.ListAsync();
-            var resources = _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryResource>>(categories);
+            var resources = _mapper.Map<IEnumerable<Museum>, IEnumerable<MuseumResource>>(categories);
 
             return resources;
         }
