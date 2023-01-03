@@ -1,4 +1,5 @@
 ﻿using MuseumAPI.Domain.Models;
+using MuseumAPI.Domain.Repositories;
 using MuseumAPI.Domain.Services;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,19 @@ namespace MuseumAPI.Services
 {
     public class MuseumService : IMuseumService
     {
-        public Task<IEnumerable<Museum>> ListAsync()
+        private readonly IMuseumRepository _museumRepository;
+
+
+        public MuseumService(IMuseumRepository museumRepository)
         {
-            throw new NotImplementedException();
+            _museumRepository = museumRepository;
+        }
 
 
+
+        public async Task<IEnumerable<Museum>> ListAsync()
+        {
+            return await _museumRepository.ListAsync();  
         }
     }
 }

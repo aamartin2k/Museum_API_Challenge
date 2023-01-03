@@ -9,7 +9,7 @@ namespace MuseumAPI.Mapping
       
         public ResourceModelProfile()
         {
-            CreateMap<Museum, MuseumResource>();
+            CreateMap<NewMuseumResource, Museum>();
 
         }
 

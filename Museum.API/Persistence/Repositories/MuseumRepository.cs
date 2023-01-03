@@ -15,7 +15,6 @@ namespace MuseumAPI.Persistence.Repositories
 
         public async Task<IEnumerable<Museum>> ListAsync()
         {
-            //throw new NotImplementedException();
             return await _context.Museums.ToListAsync();
         }
     }

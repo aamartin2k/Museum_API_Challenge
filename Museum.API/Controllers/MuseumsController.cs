@@ -37,8 +37,11 @@ namespace MuseumAPI.Controllers
         [HttpGet]
         public async Task<IEnumerable<MuseumResource>> ListAsync()
         {
-            var categories = await _museumService.ListAsync();
-            var resources = _mapper.Map<IEnumerable<Museum>, IEnumerable<MuseumResource>>(categories);
+            var museums = await _museumService.ListAsync();
+
+            Console.WriteLine("*** _museumService: " + museums.Count());
+
+            var resources = _mapper.Map<IEnumerable<Museum>, IEnumerable<MuseumResource>>(museums);
 
             return resources;
         }
