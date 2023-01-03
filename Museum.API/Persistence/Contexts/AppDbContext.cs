@@ -45,7 +45,7 @@ namespace MuseumAPI.Persistence.Contexts
                 new ArticleStatus { Id = 10, Description = "On Display" },
                 new ArticleStatus { Id = 11, Description = "Stored" },
                 new ArticleStatus { Id = 12, Description = "Damaged" },
-                new ArticleStatus { Id = 10, Description = "OnLoan" }
+                new ArticleStatus { Id = 13, Description = "OnLoan" }
             );
 
             // Museum
@@ -54,6 +54,7 @@ namespace MuseumAPI.Persistence.Contexts
             builder.Entity<Museum>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd().HasValueGenerator<InMemoryIntegerValueGenerator<int>>();
             builder.Entity<Museum>().Property(p => p.Name).IsRequired().HasMaxLength(50);
             builder.Entity<Museum>().Property(p => p.Address).IsRequired().HasMaxLength(50);
+            builder.Entity<Museum>().Property(p => p.ThemeId).IsRequired();
 
             builder.Entity<Museum>().HasMany(p => p.Articles).WithOne(p => p.Museum).HasForeignKey(p => p.MuseumId);
 
@@ -65,8 +66,22 @@ namespace MuseumAPI.Persistence.Contexts
             );
 
             // Article
+            builder.Entity<Article>().ToTable("Articles");
+            builder.Entity<Article>().HasKey(p => p.Id);
+            builder.Entity<Article>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd().HasValueGenerator<InMemoryIntegerValueGenerator<int>>();
+            builder.Entity<Article>().Property(p => p.Name).IsRequired().HasMaxLength(50);
+            builder.Entity<Article>().Property(p => p.StatusId).IsRequired();
 
-    
+            builder.Entity<Article>().HasData
+            (
+                new Article { Id = 100, Name = "Stuffed Monkey", StatusId = 10, MuseumId = 100 },
+                new Article { Id = 101, Name = "Magic Tablet", StatusId = 10, MuseumId = 100 },
+                new Article { Id = 102, Name = "Miniature Cowboy", StatusId = 10, MuseumId = 101 },
+                new Article { Id = 103, Name = "Neanderthal", StatusId = 10, MuseumId = 101 },
+                new Article { Id = 104, Name = "Big Dinosaur", StatusId = 10, MuseumId = 102 },
+                new Article { Id = 105, Name = "Pharaoh", StatusId = 12, MuseumId = 102 },
+                new Article { Id = 106, Name = "Small Dinosaur", StatusId = 13 }
+            );
         }
     }
 }

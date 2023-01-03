@@ -24,5 +24,10 @@ namespace MuseumAPI.Persistence.Repositories
         {
             return await _context.Articles.FindAsync(id);
         }
+
+        public async Task<IEnumerable<Article>> ListByMuseumIdAsync(int id)
+        {
+            return await _context.Articles.Where(a => a.MuseumId == id).ToListAsync();
+        }
     }
 }

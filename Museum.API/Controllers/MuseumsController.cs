@@ -27,13 +27,6 @@ namespace MuseumAPI.Controllers
 
 
         // GET api/Museums
-        //[HttpGet]
-        //public ActionResult<IEnumerable<string>> Get()
-        //{
-        //    return new string[] { "Museum 1", "Museum 2", "Museum 3", "Museum 4" };
-        //}
-
-        // GET api/Museums
         [HttpGet]
         public async Task<IEnumerable<MuseumResource>> ListAsync()
         {
@@ -57,5 +50,6 @@ namespace MuseumAPI.Controllers
         }
 
         
+
     }
 }

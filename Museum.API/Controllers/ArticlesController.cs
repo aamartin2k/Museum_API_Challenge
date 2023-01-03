@@ -30,15 +30,12 @@ namespace MuseumAPI.Controllers
         public async Task<IEnumerable<ArticleResource>> ListAsync()
         {
             var articles = await _articleService.ListAsync();
-
-            Console.WriteLine("*** _articleService: " + articles.Count());
-
             var resources = _mapper.Map<IEnumerable<Article>, IEnumerable<ArticleResource>>(articles);
 
             return resources;
         }
 
-        // GET api/Museums/100
+        // GET api/Articles/100
         [HttpGet("{id}")]
         public async Task<ArticleResource> ListByIdAsync(int id)
         {
@@ -46,6 +43,16 @@ namespace MuseumAPI.Controllers
             var resource = _mapper.Map<Article, ArticleResource>(article);
 
             return resource;
+        }
+
+        // GET api/Articles/Museum/100
+        [HttpGet("Museum/{id}")]
+        public async Task<IEnumerable<ArticleResource>> ListByMuseumIdAsync(int id)
+        {
+            var articles = await _articleService.ListByMuseumIdAsync(id);
+            var resources = _mapper.Map<IEnumerable<Article>, IEnumerable<ArticleResource>>(articles);
+
+            return resources;
         }
 
     }

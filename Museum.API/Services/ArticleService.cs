@@ -26,5 +26,10 @@ namespace MuseumAPI.Services
         {
             return await _articleRepository.ListByIdAsync(id);
         }
+
+        public async Task<IEnumerable<Article>> ListByMuseumIdAsync(int id)
+        {
+            return await _articleRepository.ListByMuseumIdAsync(id);
+        }
     }
 }
