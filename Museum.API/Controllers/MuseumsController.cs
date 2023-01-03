@@ -67,5 +67,23 @@ namespace MuseumAPI.Controllers
             return Ok(museumResource);
         }
 
+        // PUT
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync(int id, [FromBody] NewMuseumResource resource)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessages());
+
+            var museum = _mapper.Map<NewMuseumResource, Museum>(resource);
+            var result = await _museumService.UpdateAsync(id, museum);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var museumResource = _mapper.Map<Museum, MuseumResource>(result.Museum);
+            return Ok(museumResource);
+        }
+
+
     }
 }
