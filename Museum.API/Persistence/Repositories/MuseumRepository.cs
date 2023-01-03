@@ -11,8 +11,7 @@ namespace MuseumAPI.Persistence.Repositories
     {
         public MuseumRepository(AppDbContext context) : base(context) { }
 
-
-
+       
         public async Task<IEnumerable<Museum>> ListAsync()
         {
             return await _context.Museums.ToListAsync();
@@ -21,6 +20,21 @@ namespace MuseumAPI.Persistence.Repositories
         public async Task<Museum> ListByIdAsync(int id)
         {
             return await _context.Museums.FindAsync(id);
+        }
+
+
+        public async Task AddAsync(Museum museum)
+        {
+            await _context.Museums.AddAsync(museum);
+        }
+        public void Remove(Museum museum)
+        {
+            _context.Museums.Remove(museum);
+        }
+
+        public void Update(Museum museum)
+        {
+            _context.Museums.Update(museum);
         }
     }
 }

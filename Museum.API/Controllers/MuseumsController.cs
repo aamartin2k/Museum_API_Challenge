@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using MuseumAPI.Domain.Models;
 using MuseumAPI.Domain.Services;
 using MuseumAPI.Mapping.Resources;
+using MuseumAPI.Common;
 
 namespace MuseumAPI.Controllers
 {
@@ -25,7 +26,7 @@ namespace MuseumAPI.Controllers
             _mapper = mapper;
         }
 
-
+        // GET
         // GET api/Museums
         [HttpGet]
         public async Task<IEnumerable<MuseumResource>> ListAsync()
@@ -49,7 +50,22 @@ namespace MuseumAPI.Controllers
             return resource;
         }
 
-        
+        // POST
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] NewMuseumResource resource)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessages());
+
+            var museum = _mapper.Map<NewMuseumResource, Museum>(resource);
+            var result = await _museumService.SaveAsync(museum);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var museumResource = _mapper.Map<Museum, MuseumResource>(result.Museum);
+            return Ok(museumResource);
+        }
 
     }
 }
