@@ -11,7 +11,7 @@ namespace MuseumAPI.Mapping
         {
             CreateMap<NewMuseumResource, Museum>();
 
-            CreateMap<ArticleResource, Article>();
+            CreateMap<NewArticleResource, Article>();
         }
 
     }
