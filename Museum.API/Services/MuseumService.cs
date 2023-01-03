@@ -4,7 +4,6 @@ using MuseumAPI.Domain.Services;
 using MuseumAPI.Domain.Services.Responses;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MuseumAPI.Services
@@ -32,8 +31,6 @@ namespace MuseumAPI.Services
 
 
         
-       
-
         public async Task<MuseumResponse> SaveAsync(Museum museum)
         {
             try
@@ -59,7 +56,7 @@ namespace MuseumAPI.Services
 
             existingMuseum.Name = museum.Name;
             existingMuseum.Address = museum.Address;
-
+            existingMuseum.ThemeId = museum.ThemeId;
 
             try
             {
@@ -74,9 +71,25 @@ namespace MuseumAPI.Services
                 return new MuseumResponse($"Exception occurred updating the museum: {ex.Message}");
             }
         }
-        public Task<MuseumResponse> DeleteAsync(int id)
+        public async Task<MuseumResponse> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var existingMuseum = await _museumRepository.ListByIdAsync(id);
+
+            if (existingMuseum == null)
+                return new MuseumResponse("Museum not found.");
+
+            try
+            {
+                _museumRepository.Remove(existingMuseum);
+                await _unitOfWork.SaveChangesCompleteAsync();
+
+                return new MuseumResponse(existingMuseum);
+            }
+            catch (Exception ex)
+            {
+                // Place for do logging
+                return new MuseumResponse($"Exception occurred deleting the museum: {ex.Message}");
+            }
         }
 
     }
