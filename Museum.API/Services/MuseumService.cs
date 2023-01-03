@@ -12,11 +12,12 @@ namespace MuseumAPI.Services
     public class MuseumService : IMuseumService
     {
         private readonly IMuseumRepository _museumRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-
-        public MuseumService(IMuseumRepository museumRepository)
+        public MuseumService(IMuseumRepository museumRepository, IUnitOfWork unitOfWork)
         {
             _museumRepository = museumRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<Museum>> ListAsync()
@@ -38,6 +39,8 @@ namespace MuseumAPI.Services
             try
             {
                 await _museumRepository.AddAsync(museum);
+                await _unitOfWork.SaveChangesCompleteAsync();
+
                 return new MuseumResponse(museum);
             }
             catch (Exception ex)
@@ -61,6 +64,8 @@ namespace MuseumAPI.Services
             try
             {
                 _museumRepository.Update(existingMuseum);
+                await _unitOfWork.SaveChangesCompleteAsync();
+
                 return new MuseumResponse(existingMuseum);
             }
             catch (Exception ex)
