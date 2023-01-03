@@ -32,9 +32,6 @@ namespace MuseumAPI.Controllers
         public async Task<IEnumerable<MuseumResource>> ListAsync()
         {
             var museums = await _museumService.ListAsync();
-
-            Console.WriteLine("*** _museumService: " + museums.Count());
-
             var resources = _mapper.Map<IEnumerable<Museum>, IEnumerable<MuseumResource>>(museums);
 
             return resources;
@@ -84,6 +81,18 @@ namespace MuseumAPI.Controllers
             return Ok(museumResource);
         }
 
+        //DELETE
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            var result = await _museumService.DeleteAsync(id);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var museumResource = _mapper.Map<Museum, MuseumResource>(result.Museum);
+            return Ok(museumResource);
+        }
 
     }
 }
