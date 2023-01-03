@@ -91,5 +91,18 @@ namespace MuseumAPI.Controllers
             return Ok(articleResource);
         }
 
+        //DELETE
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            var result = await _articleService.DeleteAsync(id);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var articleResource = _mapper.Map<Article, ArticleResource>(result.Article);
+            return Ok(articleResource);
+        }
+
     }
 }
