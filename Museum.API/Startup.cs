@@ -6,12 +6,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MuseumAPI.Domain.Services;
+using MuseumAPI.Persistence.Contexts;
 using MuseumAPI.Services;
+using AutoMapper;
 
 namespace MuseumAPI
 {
@@ -29,9 +32,17 @@ namespace MuseumAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseInMemoryDatabase("museum-api-in-memory");
+            });
 
+            // Register dependencies for injection
             services.AddSingleton<IMuseumService, MuseumService>();
 
+
+            // Mapper
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

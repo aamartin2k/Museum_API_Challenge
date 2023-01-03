@@ -19,20 +19,22 @@ namespace MuseumAPI.Controllers
         private readonly IMuseumService _museumService;
 
         // Constructor
-        public MuseumsController(IMuseumService museumService)
+        public MuseumsController(IMuseumService museumService, IMapper mapper)
         {
             _museumService = museumService;
+            _mapper = mapper;
         }
 
 
         // GET api/Museums
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] { "Museum 1", "Museum 2", "Museum 3", "Museum 4" };
-        }
+        //[HttpGet]
+        //public ActionResult<IEnumerable<string>> Get()
+        //{
+        //    return new string[] { "Museum 1", "Museum 2", "Museum 3", "Museum 4" };
+        //}
 
         //
+        [HttpGet]
         public async Task<IEnumerable<MuseumResource>> ListAsync()
         {
             var categories = await _museumService.ListAsync();

@@ -11,8 +11,7 @@ namespace MuseumAPI.Domain.Models
         public string Address { get; set; }
 
         public int ThemeId { get; set; }
-        public MuseumTheme Theme { get; set; }
-
+        
         public IList<Article> Articles { get; set; } = new List<Article>();
     }
 }

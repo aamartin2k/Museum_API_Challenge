@@ -40,6 +40,13 @@ namespace MuseumAPI.Persistence.Contexts
 
             builder.Entity<Museum>().HasMany(p => p.Articles).WithOne(p => p.Museum).HasForeignKey(p => p.MuseumId);
 
+            builder.Entity<Museum>().HasData
+            (
+                new Museum { Id = 100, Name = "Modern Art Museum", Address = "25 Modern Art Plaza", ThemeId = 10 },
+                new Museum { Id = 100, Name = "Natural Science Museum", Address = "3423 Third Avenue", ThemeId = 11 },
+                new Museum { Id = 100, Name = "Ancient History Museum", Address = "875 45th Street", ThemeId = 12 }
+            );
+
 
 
         }
