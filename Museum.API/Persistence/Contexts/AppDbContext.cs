@@ -9,6 +9,7 @@ namespace MuseumAPI.Persistence.Contexts
     {
         // Declarations
         public DbSet<Museum> Museums { get; set; }
+        public DbSet<Article> Articles { get; set; }
 
         // Constructor
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
@@ -31,6 +32,22 @@ namespace MuseumAPI.Persistence.Contexts
                 new MuseumTheme { Id = 11, Description = "Natural Science" },
                 new MuseumTheme { Id = 12, Description = "History" }
             );
+
+            // ArticleStatus
+            // OnDisplay, Stored, Damaged, OnLoan
+            builder.Entity<ArticleStatus>().ToTable("ArticleStatus");
+            builder.Entity<ArticleStatus>().HasKey(p => p.Id);
+            builder.Entity<ArticleStatus>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd().HasValueGenerator<InMemoryIntegerValueGenerator<int>>();
+            builder.Entity<ArticleStatus>().Property(p => p.Description).IsRequired().HasMaxLength(30);
+            // data
+            builder.Entity<ArticleStatus>().HasData
+            (
+                new ArticleStatus { Id = 10, Description = "On Display" },
+                new ArticleStatus { Id = 11, Description = "Stored" },
+                new ArticleStatus { Id = 12, Description = "Damaged" },
+                new ArticleStatus { Id = 10, Description = "OnLoan" }
+            );
+
             // Museum
             builder.Entity<Museum>().ToTable("Museums");
             builder.Entity<Museum>().HasKey(p => p.Id);
@@ -47,9 +64,9 @@ namespace MuseumAPI.Persistence.Contexts
                 new Museum { Id = 102, Name = "Ancient History Museum", Address = "875 45th Street", ThemeId = 12 }
             );
 
-            
-            Console.WriteLine("*** OnModelCreating ")  ;
+            // Article
 
+    
         }
     }
 }

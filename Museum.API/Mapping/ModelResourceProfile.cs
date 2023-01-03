@@ -9,6 +9,11 @@ namespace MuseumAPI.Mapping
         public ModelResourceProfile()
         {
             CreateMap<Museum, MuseumResource>();
+            CreateMap<Article, ArticleResource>(); 
+
+            //CreateMap<Article, ArticleResource>()
+            //    .ForMember(src => src.UrlStatus,
+            //    opt => opt.MapFrom(src => src.Id));
 
         }
     }

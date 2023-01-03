@@ -9,5 +9,7 @@ namespace MuseumAPI.Domain.Repositories
     public interface IMuseumRepository
     {
         Task<IEnumerable<Museum>> ListAsync();
+
+        Task<Museum> ListByIdAsync(int id);
     }
 }

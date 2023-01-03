@@ -1,14 +1,13 @@
 ﻿using MuseumAPI.Domain.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MuseumAPI.Domain.Services
 {
-    public interface IMuseumService
+    public interface IArticleService
     {
-        Task<IEnumerable<Museum>> ListAsync();
+        Task<IEnumerable<Article>> ListAsync();
 
-        Task<Museum> ListByIdAsync(int id);
+        Task<Article> ListByIdAsync(int id);
     }
 }

@@ -33,7 +33,7 @@ namespace MuseumAPI.Controllers
         //    return new string[] { "Museum 1", "Museum 2", "Museum 3", "Museum 4" };
         //}
 
-        //
+        // GET api/Museums
         [HttpGet]
         public async Task<IEnumerable<MuseumResource>> ListAsync()
         {
@@ -45,5 +45,17 @@ namespace MuseumAPI.Controllers
 
             return resources;
         }
+
+        // GET api/Museums/100
+        [HttpGet("{id}")]
+        public async Task<MuseumResource> ListByIdAsync(int id)
+        {
+            var museum = await _museumService.ListByIdAsync(id);
+            var resource = _mapper.Map<Museum, MuseumResource>(museum);
+
+            return resource;
+        }
+
+        
     }
 }
