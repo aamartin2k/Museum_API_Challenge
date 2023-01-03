@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using MuseumAPI.Common;
 using MuseumAPI.Domain.Models;
 using MuseumAPI.Domain.Services;
 using MuseumAPI.Mapping.Resources;
@@ -46,6 +47,7 @@ namespace MuseumAPI.Controllers
         }
 
         // GET api/Articles/Museum/100
+        // Retrieve all Museum’s articles.
         [HttpGet("Museum/{id}")]
         public async Task<IEnumerable<ArticleResource>> ListByMuseumIdAsync(int id)
         {
@@ -55,5 +57,21 @@ namespace MuseumAPI.Controllers
             return resources;
         }
 
+        // POST
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] NewArticleResource resource)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessages());
+
+            var article = _mapper.Map<NewArticleResource, Article>(resource);
+            var result = await _articleService.SaveAsync(article);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var articleResource = _mapper.Map<Article, ArticleResource>(result.Article);
+            return Ok(articleResource);
+        }
     }
 }

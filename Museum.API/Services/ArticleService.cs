@@ -36,9 +36,20 @@ namespace MuseumAPI.Services
 
 
 
-        public Task<ArticleResponse> SaveAsync(Article article)
+        public async Task<ArticleResponse> SaveAsync(Article article)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _articleRepository.AddAsync(article);
+                await _unitOfWork.SaveChangesCompleteAsync();
+
+                return new ArticleResponse(article);
+            }
+            catch (Exception ex)
+            {
+                // Place for do logging
+                return new ArticleResponse($"Exception occurred saving the museum: {ex.Message}");
+            }
         }
 
         
