@@ -34,9 +34,14 @@ namespace MuseumAPI
             // Register dependencies for injection
             services.AddScoped<IMuseumRepository, MuseumRepository>();
             services.AddScoped<IArticleRepository, ArticleRepository>();
+            services.AddScoped<IMuseumThemeRepository, MuseumThemeRepository>();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddScoped<IMuseumService, MuseumService>();
             services.AddScoped<IArticleService, ArticleService>();
+            services.AddScoped<IMuseumThemeService, MuseumThemeService>();
+           
 
             // Register Mapper
             services.AddAutoMapper();

@@ -11,6 +11,7 @@ namespace MuseumAPI.Persistence.Contexts
         // Declarations
         public DbSet<Museum> Museums { get; set; }
         public DbSet<Article> Articles { get; set; }
+        public DbSet<MuseumTheme> Themes { get; set; }
 
         // Constructor
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }

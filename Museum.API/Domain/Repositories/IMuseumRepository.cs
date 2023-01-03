@@ -11,6 +11,8 @@ namespace MuseumAPI.Domain.Repositories
         Task<IEnumerable<Museum>> ListAsync();
         Task<Museum> ListByIdAsync(int id);
 
+        Task<IEnumerable<Museum>>  ListByThemeIdAsync(int id);
+
         Task AddAsync(Museum museum);
         void Update(Museum museum);
         void Remove(Museum museum);

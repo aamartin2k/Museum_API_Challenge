@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MuseumAPI.Domain.Models;
+using MuseumAPI.Domain.Services;
 
 namespace MuseumAPI.Controllers
 {
@@ -11,11 +10,21 @@ namespace MuseumAPI.Controllers
     [ApiController]
     public class ThemesController : ControllerBase
     {
+        private readonly IMuseumThemeService _museumThemeService;
+
+        public ThemesController(IMuseumThemeService museumService)
+        {
+            _museumThemeService = museumService;
+        }
+
+
+
         // GET api/Themes
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public async Task<IEnumerable<MuseumTheme>> ListAsync()
         {
-            return new string[] { "Art", "Natural Science", "History" };
+            var themes = await _museumThemeService.ListAsync();
+            return themes;
         }
     }
 }

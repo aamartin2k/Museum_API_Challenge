@@ -3,6 +3,7 @@ using MuseumAPI.Domain.Models;
 using MuseumAPI.Domain.Repositories;
 using MuseumAPI.Persistence.Contexts;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MuseumAPI.Persistence.Repositories
@@ -22,6 +23,10 @@ namespace MuseumAPI.Persistence.Repositories
             return await _context.Museums.FindAsync(id);
         }
 
+        public async Task<IEnumerable<Museum>> ListByThemeIdAsync(int id)
+        {
+            return await _context.Museums.Where(a => a.ThemeId == id).ToListAsync();
+        }
 
         public async Task AddAsync(Museum museum)
         {
@@ -36,5 +41,7 @@ namespace MuseumAPI.Persistence.Repositories
         {
             _context.Museums.Update(museum);
         }
+
+       
     }
 }

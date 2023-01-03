@@ -47,6 +47,19 @@ namespace MuseumAPI.Controllers
             return resource;
         }
 
+        // GET api/Museums/Themes/100
+        // Retrieve all Museums by specific Theme Id.
+        [HttpGet("Themes/{id}")]
+        public async Task<IEnumerable<MuseumResource>> ListByThemeIdAsync(int id)
+        {
+            var museums = await _museumService.ListByThemeIdAsync(id);
+            var resources = _mapper.Map<IEnumerable<Museum>, IEnumerable<MuseumResource>>(museums);
+
+            return resources;
+        }
+
+
+
         // POST
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] NewMuseumResource resource)

@@ -29,8 +29,11 @@ namespace MuseumAPI.Services
             return await _museumRepository.ListByIdAsync(id);
         }
 
+        public async Task<IEnumerable<Museum>> ListByThemeIdAsync(int id)
+        {
+            return await _museumRepository.ListByThemeIdAsync(id);
+        }
 
-        
         public async Task<MuseumResponse> SaveAsync(Museum museum)
         {
             try
@@ -92,5 +95,6 @@ namespace MuseumAPI.Services
             }
         }
 
+       
     }
 }
