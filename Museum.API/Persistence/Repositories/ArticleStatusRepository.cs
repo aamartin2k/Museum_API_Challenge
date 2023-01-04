@@ -15,5 +15,10 @@ namespace MuseumAPI.Persistence.Repositories
         {
             return await _context.Status.ToListAsync();
         }
+
+        public async Task<ArticleStatus> ListByIdAsync(int id)
+        {
+            return await _context.Status.FindAsync(id);
+        }
     }
 }

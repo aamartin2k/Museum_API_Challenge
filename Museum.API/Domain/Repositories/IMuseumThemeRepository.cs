@@ -7,5 +7,7 @@ namespace MuseumAPI.Domain.Repositories
     public interface IMuseumThemeRepository
     {
         Task<IEnumerable<MuseumTheme>> ListAsync();
+
+        Task<MuseumTheme> ListByIdAsync(int id);
     }
 }

@@ -22,8 +22,16 @@ namespace MuseumAPI.Controllers
         [HttpGet]
         public async Task<IEnumerable<ArticleStatus>> ListAsync()
         {
-            var articles = await _articleStatusService.ListAsync();
-            return articles;
+            var status = await _articleStatusService.ListAsync();
+            return status;
+        }
+
+        // GET api/Status/100
+        [HttpGet("{id}")]
+        public async Task<ArticleStatus> ListByIdAsync(int id)
+        {
+            var status = await _articleStatusService.ListByIdAsync(id);
+            return status;
         }
     }
 }

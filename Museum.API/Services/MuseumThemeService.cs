@@ -23,5 +23,10 @@ namespace MuseumAPI.Services
         {
             return await _museumThemeRepository.ListAsync();
         }
+
+        public async Task<MuseumTheme> ListByIdAsync(int id)
+        {
+            return await _museumThemeRepository.ListByIdAsync(id);
+        }
     }
 }

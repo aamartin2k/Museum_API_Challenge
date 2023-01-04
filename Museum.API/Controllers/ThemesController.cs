@@ -25,5 +25,14 @@ namespace MuseumAPI.Controllers
             var themes = await _museumThemeService.ListAsync();
             return themes;
         }
+
+        // GET api/Themes/100
+        [HttpGet("{id}")]
+        public async Task<MuseumTheme> ListByIdAsync(int id)
+        {
+            var theme = await _museumThemeService.ListByIdAsync(id);
+            return theme;
+        }
+
     }
 }
