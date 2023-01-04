@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MuseumAPI.Domain.Models;
+using MuseumAPI.Domain.Services;
 
 namespace MuseumAPI.Controllers
 {
@@ -11,11 +10,20 @@ namespace MuseumAPI.Controllers
     [ApiController]
     public class StatusController : ControllerBase
     {
-        // GET api/Themes
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private readonly IArticleStatusService _articleStatusService;
+
+        public StatusController(IArticleStatusService articleStatus)
         {
-            return new string[] { "OnDisplay", "Stored", "Damaged", "OnLoan" };
+            _articleStatusService = articleStatus;
+        }
+
+
+        // GET api/Status
+        [HttpGet]
+        public async Task<IEnumerable<ArticleStatus>> ListAsync()
+        {
+            var articles = await _articleStatusService.ListAsync();
+            return articles;
         }
     }
 }

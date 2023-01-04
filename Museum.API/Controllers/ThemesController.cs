@@ -18,7 +18,6 @@ namespace MuseumAPI.Controllers
         }
 
 
-
         // GET api/Themes
         [HttpGet]
         public async Task<IEnumerable<MuseumTheme>> ListAsync()

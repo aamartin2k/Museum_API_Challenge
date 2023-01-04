@@ -35,13 +35,15 @@ namespace MuseumAPI
             services.AddScoped<IMuseumRepository, MuseumRepository>();
             services.AddScoped<IArticleRepository, ArticleRepository>();
             services.AddScoped<IMuseumThemeRepository, MuseumThemeRepository>();
+            services.AddScoped<IArticleStatusRepository, ArticleStatusRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<IMuseumService, MuseumService>();
             services.AddScoped<IArticleService, ArticleService>();
             services.AddScoped<IMuseumThemeService, MuseumThemeService>();
-           
+            services.AddScoped<IArticleStatusService, ArticleStatusService>();
+
 
             // Register Mapper
             services.AddAutoMapper();
