@@ -13,6 +13,8 @@ namespace MuseumAPI.Mapping.Resources
         public int ThemeId { get; set; }
 
         //links for drive client behavior
+        // GET api/Articles/Museum/100  Retrieve all Museum’s articles.
+        //Just to demonstrate a very simple use of HATEOAS.
         public string UrlArticles { get; set; }
     }
 }
