@@ -18,6 +18,9 @@ namespace MuseumAPI.Mapping
                 .ForMember(dest => dest.StatusDescription,
                     opt => opt.MapFrom<StatusDescriptionResolver>());
 
+            CreateMap<ArticleStatus, ArticleStatusResource>();
+            CreateMap<MuseumTheme, MuseumThemeResource>();
+
         }
     }
 

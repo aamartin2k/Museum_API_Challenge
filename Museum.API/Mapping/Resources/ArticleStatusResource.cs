@@ -1,6 +1,6 @@
-﻿namespace MuseumAPI.Domain.Models
+﻿namespace MuseumAPI.Mapping.Resources
 {
-    public class MuseumTheme
+    public class ArticleStatusResource
     {
         public int Id { get; set; }
         public string Description { get; set; }
