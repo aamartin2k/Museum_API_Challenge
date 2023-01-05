@@ -42,7 +42,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,17 +53,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Demos\Builder.cs" />
     <Compile Include="Clients\ArticleClient.cs" />
     <Compile Include="Clients\ArticleStatusClient.cs" />
     <Compile Include="Clients\BaseClient.cs" />
     <Compile Include="Clients\MuseumClient.cs" />
     <Compile Include="Clients\MuseumThemeClient.cs" />
+    <Compile Include="Demos\ArticleDemo.cs" />
     <Compile Include="Interfaces\IArticleClient.cs" />
     <Compile Include="Interfaces\IArticleStatusClient.cs" />
     <Compile Include="Interfaces\IMuseumClient.cs" />
     <Compile Include="Interfaces\IMuseumThemeClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Demos\MuseumDemo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

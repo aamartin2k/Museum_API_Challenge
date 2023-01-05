@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Museum.Shared.NETCore\Common\Constants.cs">
+      <Link>Common\Constants.cs</Link>
+    </Compile>
     <Compile Include="..\Museum.Shared.NETCore\Mapping\Resources\ArticleResource.cs">
       <Link>Mapping\Resources\ArticleResource.cs</Link>
     </Compile>
@@ -61,5 +64,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
