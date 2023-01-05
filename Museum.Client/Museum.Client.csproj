@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Clients\ArticleClient.cs" />
     <Compile Include="Clients\ArticleStatusClient.cs" />
+    <Compile Include="Clients\BaseClient.cs" />
     <Compile Include="Clients\MuseumClient.cs" />
     <Compile Include="Clients\MuseumThemeClient.cs" />
     <Compile Include="Interfaces\IArticleClient.cs" />
