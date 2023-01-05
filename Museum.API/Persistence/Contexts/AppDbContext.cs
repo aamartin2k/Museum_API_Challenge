@@ -31,9 +31,9 @@ namespace MuseumAPI.Persistence.Contexts
             // data
             builder.Entity<MuseumTheme>().HasData
             (
-                new MuseumTheme { Id = 10, Description = "Art" },
-                new MuseumTheme { Id = 11, Description = "Natural Science" },
-                new MuseumTheme { Id = 12, Description = "History" }
+                new MuseumTheme { Id = 100, Description = "Art" },
+                new MuseumTheme { Id = 101, Description = "Natural Science" },
+                new MuseumTheme { Id = 102, Description = "History" }
             );
 
             // ArticleStatus
@@ -45,10 +45,10 @@ namespace MuseumAPI.Persistence.Contexts
             // data
             builder.Entity<ArticleStatus>().HasData
             (
-                new ArticleStatus { Id = 10, Description = "On Display" },
-                new ArticleStatus { Id = 11, Description = "Stored" },
-                new ArticleStatus { Id = 12, Description = "Damaged" },
-                new ArticleStatus { Id = 13, Description = "OnLoan" }
+                new ArticleStatus { Id = 100, Description = "On Display" },
+                new ArticleStatus { Id = 101, Description = "Stored" },
+                new ArticleStatus { Id = 102, Description = "Damaged" },
+                new ArticleStatus { Id = 103, Description = "On Loan" }
             );
 
             // Museum
@@ -63,9 +63,10 @@ namespace MuseumAPI.Persistence.Contexts
 
             builder.Entity<Museum>().HasData
             (
-                new Museum { Id = 100, Name = "Modern Art Museum", Address = "25 Modern Art Plaza", ThemeId = 10 },
-                new Museum { Id = 101, Name = "Natural Science Museum", Address = "3423 Third Avenue", ThemeId = 11 },
-                new Museum { Id = 102, Name = "Ancient History Museum", Address = "875 45th Street", ThemeId = 12 }
+                new Museum { Id = 100, Name = "Modern Art Museum", Address = "25 Modern Art Plaza", ThemeId = 100 },
+                new Museum { Id = 101, Name = "Natural Science Museum", Address = "3423 Third Avenue", ThemeId = 101 },
+                new Museum { Id = 102, Name = "Ancient History Museum", Address = "875 45th Street", ThemeId = 102 },
+                new Museum { Id = 103, Name = "Post Modern Art Museum", Address = "445 Fifth Avenue", ThemeId = 100 }
             );
 
             // Article
@@ -77,13 +78,13 @@ namespace MuseumAPI.Persistence.Contexts
 
             builder.Entity<Article>().HasData
             (
-                new Article { Id = 100, Name = "Stuffed Monkey", StatusId = 10, MuseumId = 100 },
-                new Article { Id = 101, Name = "Magic Tablet", StatusId = 10, MuseumId = 100 },
-                new Article { Id = 102, Name = "Miniature Cowboy", StatusId = 10, MuseumId = 101 },
-                new Article { Id = 103, Name = "Neanderthal", StatusId = 10, MuseumId = 101 },
-                new Article { Id = 104, Name = "Big Dinosaur", StatusId = 10, MuseumId = 102 },
-                new Article { Id = 105, Name = "Pharaoh", StatusId = 12, MuseumId = 102 },
-                new Article { Id = 106, Name = "Small Dinosaur", StatusId = 13 }
+                new Article { Id = 101, Name = "Magic Tablet", StatusId = 100, MuseumId = 100 },
+                new Article { Id = 102, Name = "Miniature Cowboy", StatusId = 100, MuseumId = 101 },
+                new Article { Id = 103, Name = "Neanderthal", StatusId = 100, MuseumId = 101 },
+                new Article { Id = 104, Name = "Big Dinosaur", StatusId = 100, MuseumId = 102 },
+                new Article { Id = 105, Name = "Pharaoh", StatusId = 102, MuseumId = 102 },
+                new Article { Id = 106, Name = "Small Dinosaur", StatusId = 103 },
+                new Article { Id = 107, Name = "Stuffed Monkey", StatusId = 100, MuseumId = 100 }
             );
         }
     }

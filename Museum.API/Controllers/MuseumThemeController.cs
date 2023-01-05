@@ -22,7 +22,7 @@ namespace MuseumAPI.Controllers
         }
 
 
-        // GET api/Themes
+        // GET api/MuseumTheme
         [HttpGet]
         public async Task<IEnumerable<MuseumThemeResource>> ListAsync()
         {
@@ -31,7 +31,7 @@ namespace MuseumAPI.Controllers
             return resources;
         }
 
-        // GET api/Themes/100
+        // GET api/MuseumTheme/100
         [HttpGet("{id}")]
         public async Task<MuseumThemeResource> ListByIdAsync(int id)
         {

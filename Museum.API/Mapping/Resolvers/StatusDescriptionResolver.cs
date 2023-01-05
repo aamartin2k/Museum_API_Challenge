@@ -9,9 +9,9 @@ namespace MuseumAPI.Mapping.Resolvers
     {
         private readonly IArticleStatusService _articleStatusService;
 
-        public StatusDescriptionResolver(IArticleStatusService articleStatus)
+        public StatusDescriptionResolver(IArticleStatusService service)
         {
-            _articleStatusService = articleStatus;
+            _articleStatusService = service;
         }
 
         public string Resolve(Article source, ArticleResource destination, string destMember, ResolutionContext context)

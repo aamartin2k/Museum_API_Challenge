@@ -22,7 +22,7 @@ namespace MuseumAPI.Controllers
         }
 
 
-        // GET api/Status
+        // GET api/ArticleStatus
         [HttpGet]
         public async Task<IEnumerable<ArticleStatusResource>> ListAsync()
         {
@@ -31,7 +31,7 @@ namespace MuseumAPI.Controllers
             return resources;
         }
 
-        // GET api/Status/100
+        // GET api/ArticleStatus/100
         [HttpGet("{id}")]
         public async Task<ArticleStatusResource> ListByIdAsync(int id)
         {

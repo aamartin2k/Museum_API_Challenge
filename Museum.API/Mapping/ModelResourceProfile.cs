@@ -9,14 +9,16 @@ namespace MuseumAPI.Mapping
     {
         public ModelResourceProfile()
         {
-            CreateMap<Museum, MuseumResource>()
-                .ForMember(dest => dest.UrlArticles,
-                    opt => opt.MapFrom(s => "/api/Articles/Museum/" +  s.Id));
-                    // Hardcoded IS Bad. Just to demonstrate a very simple use of HATEOAS.
-
             CreateMap<Article, ArticleResource>()
                 .ForMember(dest => dest.StatusDescription,
-                    opt => opt.MapFrom<StatusDescriptionResolver>());
+                opt => opt.MapFrom<StatusDescriptionResolver>());
+
+            CreateMap<Museum, MuseumResource>()
+                .ForMember(dest => dest.ThemeDescription,
+                    opt => opt.MapFrom<ThemeDescriptionResolver>())
+                .ForMember(dest => dest.UrlArticles,
+                    opt => opt.MapFrom(s => "/api/Articles/Museum/" + s.Id));
+                // Hardcoded IS Bad. Just to demonstrate a very simple use of HATEOAS.
 
             CreateMap<ArticleStatus, ArticleStatusResource>();
             CreateMap<MuseumTheme, MuseumThemeResource>();

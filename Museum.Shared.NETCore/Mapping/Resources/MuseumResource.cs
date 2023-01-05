@@ -11,6 +11,7 @@ namespace MuseumAPI.Mapping.Resources
         public string Name { get; set; }
         public string Address { get; set; }
         public int ThemeId { get; set; }
+        public string ThemeDescription { get; set; }
 
         //links for drive client behavior
         // GET api/Articles/Museum/100  Retrieve all Museum’s articles.

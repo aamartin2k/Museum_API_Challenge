@@ -10,8 +10,11 @@ namespace Museum.Client.Interfaces
     interface IArticleClient
     {
         List<ArticleResource> Get();
-        void Create(ArticleResource resource);
+        void Create(NewArticleResource resource);
         void Update(int id, ArticleResource resource);
         void Delete(int id);
-    }
+
+        ArticleResource ListById(int id);
+        List<ArticleResource> ListByMuseumID(int id);
+    };
 }
