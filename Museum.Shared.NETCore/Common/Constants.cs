@@ -7,6 +7,9 @@
 
         public const string BaseUrl = "https://localhost:5001/api/";
         public const string ResMuseums = "Museums/";
+        public const string ResMuseumTheme = "MuseumTheme/";
+
         public const string ResArticles = "Articles/";
+        public const string ResArticleStatus = "ArticleStatus/";
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Museum.Client.Interfaces;
 using MuseumAPI.Mapping.Resources;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,12 @@ namespace Museum.Client.Clients
             throw new NotImplementedException();
         }
 
+        // Read All
         public List<ArticleStatusResource> Get()
         {
-            throw new NotImplementedException();
+            var request = new RestRequest(_resource, Method.GET);
+            var response = _client.Execute<List<ArticleStatusResource>>(request);
+            return response.Data;
         }
 
         public void Update(int id, ArticleStatusResource resource)

@@ -1,16 +1,14 @@
 ﻿using Museum.Client.Clients;
+using Museum.Client.Forms;
 using MuseumAPI.Mapping.Resources;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Museum.Client.Demos
 {
-    static class MuseumDemo
+    internal static class MuseumDemo
     {
-        public static void Demo(string baseUrl, string resource)
+        public static void Demo_Museum(string baseUrl, string resource)
         {
             #region Museums
          
@@ -20,10 +18,18 @@ namespace Museum.Client.Demos
 
             Console.WriteLine("Start: " + client.GetType().Name);
             Console.WriteLine("Found {0} museums: ", museums.Count);
+
+            FormList form = new FormList();
+           
             foreach (var museum in museums)
             {
                 Console.WriteLine("\t{0} (ID:{1}) Address: {2} Theme: {3}", museum.Name, museum.Id, museum.Address, museum.ThemeDescription);
-            }
+                form.listBox1.Items.Add(museum.Name);
+            };
+
+            form.ShowDialog();
+   
+
             // Create
             Console.WriteLine();
             Console.WriteLine("Adding a new museum");
@@ -91,5 +97,18 @@ namespace Museum.Client.Demos
 
             #endregion
         }
+
+        public static void Demo_MuseumTheme(string baseUrl, string resource)
+        {
+            var articleClient = new MuseumThemeClient(baseUrl, resource);
+            var articles = articleClient.Get();
+
+            Console.WriteLine("Found {0} museum themes: ", articles.Count);
+            foreach (var article in articles)
+            {
+                Console.WriteLine("\t{0} (ID:{1})", article.Description, article.Id);
+            }
+        }
+
     }
 }

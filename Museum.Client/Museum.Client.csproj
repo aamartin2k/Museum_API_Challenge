@@ -60,6 +60,12 @@
     <Compile Include="Clients\MuseumClient.cs" />
     <Compile Include="Clients\MuseumThemeClient.cs" />
     <Compile Include="Demos\ArticleDemo.cs" />
+    <Compile Include="Forms\FormList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormList.Designer.cs">
+      <DependentUpon>FormList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\IArticleClient.cs" />
     <Compile Include="Interfaces\IArticleStatusClient.cs" />
     <Compile Include="Interfaces\IMuseumClient.cs" />
@@ -77,6 +83,12 @@
       <Project>{15d062c0-0e71-4bfa-a550-7749d94fae5f}</Project>
       <Name>Museum.Shared.NETFrx</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\FormList.resx">
+      <DependentUpon>FormList.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

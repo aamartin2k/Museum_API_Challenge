@@ -1,26 +1,20 @@
-﻿using Museum.Client.Clients;
-using MuseumAPI.Mapping.Resources;
+﻿using Museum.Client.Demos;
 using System;
-using System.Linq;
+using System.Windows.Forms;
+
 
 namespace Museum.Client
 {
-    class Program
+    static class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
-            string baseUrl = "https://localhost:5001/api/";
-            string resource;
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
-           
-            Console.WriteLine();
-            Console.WriteLine("Press enter to continue with Articles...");
-            Console.ReadLine();
-            Console.WriteLine();
 
-         
-            Console.WriteLine("Press enter to exit");
-            Console.ReadLine();
+            Builder.Demo();
         }
     }
 }

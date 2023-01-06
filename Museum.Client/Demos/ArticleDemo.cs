@@ -1,16 +1,14 @@
 ﻿using Museum.Client.Clients;
+using Museum.Client.Forms;
 using MuseumAPI.Mapping.Resources;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Museum.Client.Demos
 {
-    static class ArticleDemo
+    internal static class ArticleDemo
     {
-        public static void Demo(string baseUrl, string resource)
+        public static void Demo_Article(string baseUrl, string resource)
         {
             #region Articles
     
@@ -20,10 +18,16 @@ namespace Museum.Client.Demos
 
             Console.WriteLine("Start: " + articleClient.GetType().Name);
             Console.WriteLine("Found {0} articles: ", articles.Count);
+
+            FormList form = new FormList();
+
             foreach (var article in articles)
             {
                 Console.WriteLine("\t{0} (ID:{1}) Status: {2} Location: {3}", article.Name, article.Id, article.StatusDescription, article.MuseumId);
+                form.listBox1.Items.Add(article.Name);
             }
+
+            form.ShowDialog();
 
             // Create
             Console.WriteLine();
@@ -62,6 +66,7 @@ namespace Museum.Client.Demos
                 Console.WriteLine("\t{0} (ID:{1}) Status: {2} Location: {3}", article.Name, article.Id, article.StatusDescription, article.MuseumId);
             }
 
+            Console.WriteLine();
             // Add articles to Museum ID
             Console.WriteLine("Add articles 105 & 107 to Museum Id = 101");
             // 105
@@ -82,6 +87,7 @@ namespace Museum.Client.Demos
                 Console.WriteLine("\t{0} (ID:{1}) Status: {2} Location: {3}", article.Name, article.Id, article.StatusDescription, article.MuseumId);
             }
 
+            Console.WriteLine();
             // Change status
             Console.WriteLine("Selecting all damaged articles");
             articles = articleClient.Get();
@@ -93,7 +99,8 @@ namespace Museum.Client.Demos
                 Console.WriteLine("\t{0} (ID:{1}) Status: {2} Location: {3}", article.Name, article.Id, article.StatusDescription, article.MuseumId);
             }
 
-            Console.WriteLine("Changing article 101  status to damaged");
+            Console.WriteLine();
+            Console.WriteLine("Changing article 101 status to damaged");
             artc = articles.Where(ar => ar.Id == 101).First();
             artc.StatusId = 102;
             articleClient.Update(artc.Id, artc);
@@ -125,6 +132,18 @@ namespace Museum.Client.Demos
 
 
             #endregion
+        }
+
+        public static void Demo_ArticleStatus(string baseUrl, string resource)
+        {
+            var articleClient = new ArticleStatusClient(baseUrl, resource);
+            var articles = articleClient.Get();
+
+            Console.WriteLine("Found {0} article status: ", articles.Count);
+            foreach (var article in articles)
+            {
+                Console.WriteLine("\t{0} (ID:{1})", article.Description, article.Id);
+            }
         }
     }
 }
