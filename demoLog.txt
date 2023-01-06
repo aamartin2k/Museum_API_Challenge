@@ -1,0 +1,116 @@
+
+d:\Programming\19 REST\Xtra Travel Museum\Source\Bin\NETFramework>museum.client.exe
+
+Press enter to show Museums...
+
+
+Start: MuseumClient
+Found 4 museums:
+        Modern Art Museum (ID:100) Address: 25 Modern Art Plaza Theme: Art
+        Natural Science Museum (ID:101) Address: 3423 Third Avenue Theme: Natural Science
+        Ancient History Museum (ID:102) Address: 875 45th Street Theme: History
+        Post Modern Art Museum (ID:103) Address: 445 Fifth Avenue Theme: Art
+
+Adding a new museum
+Now found 5 museums
+        Ultimate Museum (ID:1) Address: 34th Museum Road North Theme: Natural Science
+
+Updating the last museum
+Now found 5 museums
+        Miniature Ultimate Museum (ID:1) Address: 34th Museum Road North Theme: History
+
+Get all Museums by Theme
+  Museums of Theme Art:
+  Found 2 museums:
+        Modern Art Museum (ID:100) Address: 25 Modern Art Plaza Theme: Art
+        Post Modern Art Museum (ID:103) Address: 445 Fifth Avenue Theme: Art
+  Museums of Theme Natural Science:
+  Found 1 museums:
+        Natural Science Museum (ID:101) Address: 3423 Third Avenue Theme: Natural Science
+  Museums of Theme History:
+  Found 2 museums:
+        Ancient History Museum (ID:102) Address: 875 45th Street Theme: History
+        Miniature Ultimate Museum (ID:1) Address: 34th Museum Road North Theme: History
+
+Deleting the last museum
+Now found 4 museums
+        Modern Art Museum (ID:100) Address: 25 Modern Art Plaza Theme: Art
+        Natural Science Museum (ID:101) Address: 3423 Third Avenue Theme: Natural Science
+        Ancient History Museum (ID:102) Address: 875 45th Street Theme: History
+        Post Modern Art Museum (ID:103) Address: 445 Fifth Avenue Theme: Art
+
+Press enter to continue with Museum Themes...
+
+
+Found 3 museum themes:
+        Art (ID:100)
+        Natural Science (ID:101)
+        History (ID:102)
+
+Press enter to continue with Articles...
+
+
+Start: ArticleClient
+Found 7 articles:
+        Magic Tablet (ID:101) Status: On Display Location: 100
+        Miniature Cowboy (ID:102) Status: On Display Location: 101
+        Neanderthal (ID:103) Status: On Display Location: 101
+        Big Dinosaur (ID:104) Status: On Display Location: 102
+        Pharaoh (ID:105) Status: Damaged Location: 102
+        Small Dinosaur (ID:106) Status: On Loan Location: 0
+        Stuffed Monkey (ID:107) Status: On Display Location: 100
+
+Adding a new article
+Now found 8 articles
+        Miniature Roman (ID:1) Status: On Display Location: 101
+
+Updating the last article
+Now found 8 articles
+        Miniature Roman Damaged (ID:1) Status: Damaged Location: 101
+
+Selecting all Museum's articles for Museum Id = 101
+Found 3 articles:
+        Miniature Cowboy (ID:102) Status: On Display Location: 101
+        Neanderthal (ID:103) Status: On Display Location: 101
+        Miniature Roman Damaged (ID:1) Status: Damaged Location: 101
+Add articles 105 & 107 to Museum Id = 101
+Selecting all Museum's articles for Museum Id = 101
+Found 5 articles:
+        Miniature Cowboy (ID:102) Status: On Display Location: 101
+        Neanderthal (ID:103) Status: On Display Location: 101
+        Pharaoh (ID:105) Status: Damaged Location: 101
+        Stuffed Monkey (ID:107) Status: On Display Location: 101
+        Miniature Roman Damaged (ID:1) Status: Damaged Location: 101
+Selecting all damaged articles
+Found 2 articles:
+        Pharaoh (ID:105) Status: Damaged Location: 101
+        Miniature Roman Damaged (ID:1) Status: Damaged Location: 101
+Changing article 101  status to damaged
+Selecting all damaged articles
+Found 3 articles:
+        Magic Tablet (ID:101) Status: Damaged Location: 100
+        Pharaoh (ID:105) Status: Damaged Location: 101
+        Miniature Roman Damaged (ID:1) Status: Damaged Location: 101
+
+Deleting the last article
+Found 7 articles:
+        Magic Tablet (ID:101) Status: Damaged Location: 100
+        Miniature Cowboy (ID:102) Status: On Display Location: 101
+        Neanderthal (ID:103) Status: On Display Location: 101
+        Big Dinosaur (ID:104) Status: On Display Location: 102
+        Pharaoh (ID:105) Status: Damaged Location: 101
+        Small Dinosaur (ID:106) Status: On Loan Location: 0
+        Stuffed Monkey (ID:107) Status: On Display Location: 101
+
+Press enter to continue with Article Status...
+
+
+Found 4 article status:
+        On Display (ID:100)
+        Stored (ID:101)
+        Damaged (ID:102)
+        On Loan (ID:103)
+Press enter to exit
+
+
+d:\Programming\19 REST\Xtra Travel Museum\Source\Bin\NETFramework>
