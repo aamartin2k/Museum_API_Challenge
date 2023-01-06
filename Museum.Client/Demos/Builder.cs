@@ -1,4 +1,5 @@
 ﻿using MuseumAPI.Common;
+using RestSharp;
 using System;
 
 namespace Museum.Client.Demos
@@ -12,28 +13,28 @@ namespace Museum.Client.Demos
             Console.ReadLine();
 
             Console.WriteLine();
-            MuseumDemo.Demo_Museum(Constants.BaseUrl, Constants.ResMuseums);
+            MuseumDemo.Demo_Museum(new RestClient(Constants.BaseUrl), Constants.ResMuseums);
 
             Console.WriteLine();
             Console.WriteLine("Press enter to continue with Museum Themes...");
             Console.ReadLine();
             Console.WriteLine();
 
-            MuseumDemo.Demo_MuseumTheme(Constants.BaseUrl, Constants.ResMuseumTheme);
+            MuseumDemo.Demo_MuseumTheme(new RestClient(Constants.BaseUrl), Constants.ResMuseumTheme);
 
             Console.WriteLine();
             Console.WriteLine("Press enter to continue with Articles...");
             Console.ReadLine();
             Console.WriteLine();
 
-            ArticleDemo.Demo_Article(Constants.BaseUrl, Constants.ResArticles);
+            ArticleDemo.Demo_Article(new RestClient(Constants.BaseUrl), Constants.ResArticles);
 
             Console.WriteLine();
             Console.WriteLine("Press enter to continue with Article Status...");
             Console.ReadLine();
             Console.WriteLine();
 
-            ArticleDemo.Demo_ArticleStatus(Constants.BaseUrl, Constants.ResArticleStatus);
+            ArticleDemo.Demo_ArticleStatus(new RestClient(Constants.BaseUrl), Constants.ResArticleStatus);
 
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();

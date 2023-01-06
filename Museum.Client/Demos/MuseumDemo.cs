@@ -1,6 +1,7 @@
 ﻿using Museum.Client.Clients;
 using Museum.Client.Forms;
 using MuseumAPI.Mapping.Resources;
+using RestSharp;
 using System;
 using System.Linq;
 
@@ -8,15 +9,15 @@ namespace Museum.Client.Demos
 {
     internal static class MuseumDemo
     {
-        public static void Demo_Museum(string baseUrl, string resource)
+        public static void Demo_Museum(IRestClient rclient, string resource)
         {
             #region Museums
          
             // Read
-            var client = new MuseumClient(baseUrl, resource);
-            var museums = client.Get();
+            var mclient = new MuseumClient(rclient, resource);
+            var museums = mclient.Get();
 
-            Console.WriteLine("Start: " + client.GetType().Name);
+            Console.WriteLine("Start: " + mclient.GetType().Name);
             Console.WriteLine("Found {0} museums: ", museums.Count);
 
             FormList form = new FormList();
@@ -33,9 +34,10 @@ namespace Museum.Client.Demos
             // Create
             Console.WriteLine();
             Console.WriteLine("Adding a new museum");
-            client.Create(new NewMuseumResource() { Name = "Ultimate Museum", Address = "34th Museum Road North", ThemeId = 101 });
+            mclient.Create(new NewMuseumResource() { Name = "Ultimate Museum", Address = "34th Museum Road North", ThemeId = 101 });
+           
             // Read again
-            museums = client.Get();
+            museums = mclient.Get();
             Console.WriteLine("Now found {0} museums", museums.Count);
             var lastM = museums.OrderBy(p => p.Id).First();
             Console.WriteLine("\t{0} (ID:{1}) Address: {2} Theme: {3}", lastM.Name, lastM.Id, lastM.Address, lastM.ThemeDescription);
@@ -46,10 +48,10 @@ namespace Museum.Client.Demos
             lastM.Name = "Miniature Ultimate Museum";
             lastM.ThemeId = 102;
 
-            client.Update(lastM.Id, lastM);
+            mclient.Update(lastM.Id, lastM);
 
             // Read again
-            museums = client.Get();
+            museums = mclient.Get();
             Console.WriteLine("Now found {0} museums", museums.Count);
             lastM = museums.OrderBy(p => p.Id).First();
             Console.WriteLine("\t{0} (ID:{1}) Address: {2} Theme: {3}", lastM.Name, lastM.Id, lastM.Address, lastM.ThemeDescription);
@@ -58,7 +60,7 @@ namespace Museum.Client.Demos
             Console.WriteLine();
             Console.WriteLine("Get all Museums by Theme");
             Console.WriteLine("  Museums of Theme Art:");
-            museums = client.ListByThemeID(100);
+            museums = mclient.ListByThemeID(100);
             Console.WriteLine("  Found {0} museums: ", museums.Count);
             foreach (var museum in museums)
             {
@@ -66,7 +68,7 @@ namespace Museum.Client.Demos
             }
 
             Console.WriteLine("  Museums of Theme Natural Science:");
-            museums = client.ListByThemeID(101);
+            museums = mclient.ListByThemeID(101);
             Console.WriteLine("  Found {0} museums: ", museums.Count);
             foreach (var museum in museums)
             {
@@ -74,7 +76,7 @@ namespace Museum.Client.Demos
             }
 
             Console.WriteLine("  Museums of Theme History:");
-            museums = client.ListByThemeID(102);
+            museums = mclient.ListByThemeID(102);
             Console.WriteLine("  Found {0} museums: ", museums.Count);
             foreach (var museum in museums)
             {
@@ -85,10 +87,10 @@ namespace Museum.Client.Demos
             Console.WriteLine();
             Console.WriteLine("Deleting the last museum");
 
-            client.Delete(lastM.Id);
+            mclient.Delete(lastM.Id);
 
             // Read again
-            museums = client.Get();
+            museums = mclient.Get();
             Console.WriteLine("Now found {0} museums", museums.Count);
             foreach (var museum in museums)
             {
@@ -98,9 +100,9 @@ namespace Museum.Client.Demos
             #endregion
         }
 
-        public static void Demo_MuseumTheme(string baseUrl, string resource)
+        public static void Demo_MuseumTheme(IRestClient client, string resource)
         {
-            var articleClient = new MuseumThemeClient(baseUrl, resource);
+            var articleClient = new MuseumThemeClient(client, resource);
             var articles = articleClient.Get();
 
             Console.WriteLine("Found {0} museum themes: ", articles.Count);

@@ -1,6 +1,7 @@
 ﻿using Museum.Client.Clients;
 using Museum.Client.Forms;
 using MuseumAPI.Mapping.Resources;
+using RestSharp;
 using System;
 using System.Linq;
 
@@ -8,12 +9,14 @@ namespace Museum.Client.Demos
 {
     internal static class ArticleDemo
     {
-        public static void Demo_Article(string baseUrl, string resource)
+        public static void Demo_Article(IRestClient client, string resource)
         {
             #region Articles
     
             // Read
-            var articleClient = new ArticleClient(baseUrl, resource);
+            //var articleClient = new ArticleClient(baseUrl, resource);
+            var articleClient = new ArticleClient(client, resource);
+
             var articles = articleClient.Get();
 
             Console.WriteLine("Start: " + articleClient.GetType().Name);
@@ -134,9 +137,9 @@ namespace Museum.Client.Demos
             #endregion
         }
 
-        public static void Demo_ArticleStatus(string baseUrl, string resource)
+        public static void Demo_ArticleStatus(IRestClient client, string resource)
         {
-            var articleClient = new ArticleStatusClient(baseUrl, resource);
+            var articleClient = new ArticleStatusClient(client, resource);
             var articles = articleClient.Get();
 
             Console.WriteLine("Found {0} article status: ", articles.Count);

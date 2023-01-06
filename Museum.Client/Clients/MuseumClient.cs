@@ -1,17 +1,15 @@
 ﻿using Museum.Client.Interfaces;
 using MuseumAPI.Mapping.Resources;
 using RestSharp;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Museum.Client.Clients
 {
     class MuseumClient : BaseClient, IMuseumClient
     {
-        public MuseumClient(string baseUrl, string resource) : base(baseUrl, resource) { }
+
+        public MuseumClient(IRestClient client, string resource) : base(client, resource) { }
+
 
         // Create
         public void Create(NewMuseumResource resource)

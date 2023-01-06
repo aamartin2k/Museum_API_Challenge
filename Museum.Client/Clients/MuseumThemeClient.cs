@@ -3,16 +3,13 @@ using MuseumAPI.Mapping.Resources;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Museum.Client.Clients
 {
     class MuseumThemeClient : BaseClient, IMuseumThemeClient
     {
 
-        public MuseumThemeClient(string baseUrl, string resource) : base(baseUrl, resource) { }
+        public MuseumThemeClient(IRestClient client, string resource) : base(client, resource) { }
 
 
         public void Create(MuseumThemeResource resource)
