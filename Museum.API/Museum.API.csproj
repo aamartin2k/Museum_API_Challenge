@@ -12,24 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Mapping\Resources\ArticleResource.cs" />
-    <Compile Remove="Mapping\Resources\ArticleStatusResource.cs" />
-    <Compile Remove="Mapping\Resources\MuseumResource.cs" />
-    <Compile Remove="Mapping\Resources\MuseumThemeResource.cs" />
-    <Compile Remove="Mapping\Resources\NewArticleResource.cs" />
-    <Compile Remove="Mapping\Resources\NewMuseumResource.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Mapping\Resources\ArticleResource.cs" />
-    <None Include="Mapping\Resources\ArticleStatusResource.cs" />
-    <None Include="Mapping\Resources\MuseumResource.cs" />
-    <None Include="Mapping\Resources\MuseumThemeResource.cs" />
-    <None Include="Mapping\Resources\NewArticleResource.cs" />
-    <None Include="Mapping\Resources\NewMuseumResource.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />

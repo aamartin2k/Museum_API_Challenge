@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.InMemory.ValueGeneration.Internal;
 using MuseumAPI.Common;
 using MuseumAPI.Domain.Models;

@@ -18,10 +18,12 @@ namespace Museum.Client.Demos
             var museums = mclient.Get();
 
             Console.WriteLine("Start: " + mclient.GetType().Name);
-            Console.WriteLine("Found {0} museums: ", museums.Count);
+            var text = string.Format("Found {0} museums: ", museums.Count);
+            Console.WriteLine(text);
 
             FormList form = new FormList();
-           
+            form.Text = text;
+
             foreach (var museum in museums)
             {
                 Console.WriteLine("\t{0} (ID:{1}) Address: {2} Theme: {3}", museum.Name, museum.Id, museum.Address, museum.ThemeDescription);

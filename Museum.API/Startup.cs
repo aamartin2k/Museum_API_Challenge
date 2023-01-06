@@ -44,7 +44,6 @@ namespace MuseumAPI
             services.AddScoped<IMuseumThemeService, MuseumThemeService>();
             services.AddScoped<IArticleStatusService, ArticleStatusService>();
 
-
             // Register Mapper
             services.AddAutoMapper();
         }

@@ -20,9 +20,11 @@ namespace Museum.Client.Demos
             var articles = articleClient.Get();
 
             Console.WriteLine("Start: " + articleClient.GetType().Name);
-            Console.WriteLine("Found {0} articles: ", articles.Count);
+            var text = string.Format("Found {0} articles: ", articles.Count);
+            Console.WriteLine(text);
 
             FormList form = new FormList();
+            form.Text = text;
 
             foreach (var article in articles)
             {
